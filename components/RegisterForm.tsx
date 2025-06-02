@@ -17,7 +17,7 @@ export function RegisterForm() {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="bg-gradient-to-tr from-blue-600 to-blue-500 rounded-full p-3 inline-flex mb-4">
+        <div className="bg-gradient-to-tr from-[#00ABE4] to-[#0096c7] rounded-full p-3 inline-flex mb-4">
           <UserPlusIcon className="h-8 w-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">Crear cuenta</h2>
@@ -156,7 +156,7 @@ export function RegisterForm() {
         </div>
         <button
           type="submit"
-          className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+          className="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-gradient-to-r from-[#00ABE4] to-[#0096c7] hover:from-[#0096c7] hover:to-[#00ABE4] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00ABE4] transition-all duration-300"
         >
           Registrarse
           <UserPlusIcon className="h-4 w-4" />
