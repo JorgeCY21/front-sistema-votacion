@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { LoginForm } from '../components/LoginForm'
 import { RegisterForm } from '../components/RegisterForm'
-import { Header } from '../components/Header'
 export function LoginPage() {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login')
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#E9F1FA] via-white to-[#E9F1FA] flex flex-col w-full">
-      <Header />
       <main className="flex flex-1 items-center justify-center px-4 py-8">
         <div className="w-full max-w-md">
           <div className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-[0_8px_30px_rgb(0,171,228,0.12)] p-8 transition-all duration-300">
