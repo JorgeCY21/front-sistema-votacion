@@ -4,14 +4,12 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from './pages/LoginPage'
 import { HomePage } from './pages/HomePage'
 import { useAuth } from './context/AuthContext'
-import { Header } from './components/Header'
 
 export function App() {
   const { user } = useAuth()
 
   return (
     <BrowserRouter>
-      <Header />  {/* Aquí va el header */}
       <Routes>
         <Route
           path="/"
