@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { LoginForm } from './LoginForm'
-import { RegisterForm } from './RegisterForm'
-import { Header } from './Header'
+import { LoginForm } from '../components/LoginForm'
+import { RegisterForm } from '../components/RegisterForm'
+import { Header } from '../components/Header'
 export function LoginPage() {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login')
   return (
