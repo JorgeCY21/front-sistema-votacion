@@ -1,5 +1,3 @@
-// src/data/electionsData.ts
-
 export interface Election {
   id: string
   title: string
