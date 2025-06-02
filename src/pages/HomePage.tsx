@@ -7,17 +7,19 @@ export function HomePage() {
   const { user, logout } = useAuth()
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 flex flex-col items-center">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold text-blue-600">
-          ¡Hola, {user}!
-        </h1>
-      </header>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <Header /> {/* Aquí agregamos el Header */}
 
-      <main className="w-full max-w-3xl bg-white rounded-lg shadow p-6">
-        <p className="text-gray-700 mb-6">
-          Bienvenido al sistema de votación electrónica.
-        </p>
+      <main className="flex-grow w-full max-w-3xl bg-white rounded-lg shadow p-6 mx-auto mt-8">
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold text-blue-600">
+            ¡Hola, {user}!
+          </h1>
+        </header>
+
+        <section className="mb-6 text-gray-700">
+          <p>Bienvenido al sistema de votación electrónica.</p>
+        </section>
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-3">Opciones disponibles</h2>
