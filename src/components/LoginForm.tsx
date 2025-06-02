@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useAuth } from '../context/AuthContext'
+import { users } from '../data/users' // ajusta según donde pongas el JSON
+import { HomePage } from '../pages/HomePage'
 
 import {
   UserIcon,
@@ -12,17 +13,37 @@ import {
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
-  const { login } = useAuth()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const target = e.target as typeof e.target & {
       email: { value: string }
+      password: { value: string }
     }
-    login(target.email.value) // guardamos el email como usuario logueado
+    const email = target.email.value
+    const password = target.password.value
+
+    // Validar usuario y contraseña con el JSON
+    const userFound = users.find(
+      (u) => u.email === email && u.password === password
+    )
+
+    if (userFound) {
+      setIsLoggedIn(true)
+      setError('')
+    } else {
+      setError('Correo o contraseña incorrectos')
+    }
   }
+
+  if (isLoggedIn) {
+    return <HomePage />
+  }
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-md mx-auto">
       <div className="text-center">
         <div className="bg-gradient-to-tr from-[#00ABE4] to-[#0096c7] rounded-full p-3 inline-flex mb-4">
           <LogInIcon className="h-8 w-8 text-white" />
@@ -33,6 +54,9 @@ export function LoginForm() {
         </p>
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
+        {error && (
+          <p className="text-red-600 text-center font-medium">{error}</p>
+        )}
         <div className="space-y-2">
           <label
             htmlFor="email"
