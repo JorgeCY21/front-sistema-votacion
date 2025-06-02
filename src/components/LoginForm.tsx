@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { users } from '../data/users' // ajusta según donde pongas el JSON
-import { HomePage } from '../pages/HomePage'
+import { users } from '../data/users'
+import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 import {
   UserIcon,
@@ -13,8 +14,9 @@ import {
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [error, setError] = useState('')
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,21 +27,17 @@ export function LoginForm() {
     const email = target.email.value
     const password = target.password.value
 
-    // Validar usuario y contraseña con el JSON
     const userFound = users.find(
       (u) => u.email === email && u.password === password
     )
 
     if (userFound) {
-      setIsLoggedIn(true)
+      login(email)
       setError('')
+      navigate('/home') // redirige a HomePage y cambia pestaña
     } else {
       setError('Correo o contraseña incorrectos')
     }
-  }
-
-  if (isLoggedIn) {
-    return <HomePage />
   }
 
   return (
