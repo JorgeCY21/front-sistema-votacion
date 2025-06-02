@@ -1,6 +1,10 @@
 import React from 'react'
 import { VoteIcon, ShieldCheckIcon } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
+
 export function Header() {
+  const { user } = useAuth()
+
   return (
     <header className="bg-gradient-to-r from-[#E9F1FA] to-white shadow-sm py-4 px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -13,7 +17,13 @@ export function Header() {
         </div>
         <div className="flex items-center text-[#00ABE4]">
           <ShieldCheckIcon className="h-5 w-5 mr-1" />
-          <span className="text-sm font-medium">Seguro</span>
+          {user ? (
+            <span className="text-sm font-medium">
+              Bienvenido, {user}
+            </span>
+          ) : (
+            <span className="text-sm font-medium">Seguro</span>
+          )}
         </div>
       </div>
     </header>

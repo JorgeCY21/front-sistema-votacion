@@ -6,15 +6,35 @@ export function HomePage() {
   const { user, logout } = useAuth()
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-4">¡Hola, {user}!</h1>
-      <p>Bienvenido al sistema de votación.</p>
-      <button
-        onClick={logout}
-        className="mt-6 px-4 py-2 bg-red-500 text-white rounded"
-      >
-        Cerrar sesión
-      </button>
+    <div className="min-h-screen bg-gray-100 p-8 flex flex-col items-center">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-blue-600">
+          ¡Hola, {user}!
+        </h1>
+      </header>
+
+      <main className="w-full max-w-3xl bg-white rounded-lg shadow p-6">
+        <p className="text-gray-700 mb-6">
+          Bienvenido al sistema de votación electrónica.
+        </p>
+
+        <section className="mb-6">
+          <h2 className="text-2xl font-semibold mb-3">Opciones disponibles</h2>
+          <ul className="list-disc list-inside text-gray-600 space-y-1">
+            <li>Ver candidatos disponibles</li>
+            <li>Emitir voto</li>
+            <li>Consultar resultados preliminares</li>
+            <li>Configuración de perfil</li>
+          </ul>
+        </section>
+
+        <button
+          onClick={logout}
+          className="mt-4 bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded transition"
+        >
+          Cerrar sesión
+        </button>
+      </main>
     </div>
   )
 }
