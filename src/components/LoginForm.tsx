@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { users } from '../data/users'
+import { users, type User } from '../data/users'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-
 import {
   UserIcon,
   LockIcon,
@@ -32,7 +31,7 @@ export function LoginForm() {
     )
 
     if (userFound) {
-      login(email)
+      login(userFound) // Aquí pasa el user completo con rol
       setError('')
       navigate('/home') // redirige a HomePage y cambia pestaña
     } else {

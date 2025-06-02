@@ -14,18 +14,22 @@ export function Header() {
           </h1>
           <h1 className="text-xl font-bold text-gray-800 sm:hidden">SVE</h1>
         </div>
-        <div className="flex items-center text-[#00ABE4]">
-          <ShieldCheckIcon className="h-5 w-5 mr-1" />
-          {user ? (
-            <span className="text-sm font-medium">
-              Bienvenido, {user}
+        <div className="flex flex-col items-end text-right text-[#00ABE4]">
+          <div className="flex items-center space-x-1">
+            <ShieldCheckIcon className="h-5 w-5" />
+            {user ? (
+              <span className="text-sm font-medium">Bienvenido, {user.email}</span>
+            ) : (
+              <span className="text-sm font-medium">Seguro</span>
+            )}
+          </div>
+          {user?.role && (
+            <span className="text-xs text-gray-500">
+              Rol: {user.role === 'admin' ? 'Administrador' : 'Votante'}
             </span>
-          ) : (
-            <span className="text-sm font-medium">Seguro</span>
           )}
         </div>
       </div>
     </header>
   )
 }
-
