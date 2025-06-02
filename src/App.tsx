@@ -1,9 +1,17 @@
-import React from 'react'
-import { LoginPage } from './pages/LoginPage'
-import { HomePage } from './pages/HomePage'
-import { useAuth } from './context/AuthContext'
+import React, { useState } from 'react';
+import { LoginPage } from './pages/LoginPage';
+import { HomePage } from './pages/HomePage';
 
 export function App() {
-  const { user } = useAuth()
-  return user ? <HomePage /> : <LoginPage />
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <>
+      {isLoggedIn ? (
+        <HomePage />
+      ) : (
+        <LoginPage onLoginSuccess={() => setIsLoggedIn(true)} />
+      )}
+    </>
+  );
 }
