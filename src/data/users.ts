@@ -6,7 +6,7 @@ export interface User {
 
 export const users: User[] = [
   { email: 'user1@example.com', password: '123456', role: 'voter' },
-  { email: 'user2@example.com', password: 'password', role: 'voter' },
+  { email: 'e@e', password: '2', role: 'voter' },
   { email: 'jorgecondoriosy21@gmail.com', password: '12345', role: 'voter' },
   { email: 'a@a', password: '1', role: 'admin' },
 ]

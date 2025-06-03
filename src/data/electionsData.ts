@@ -2,9 +2,19 @@ export interface Election {
   id: string
   title: string
   description: string
+  fechaInicio: string // formato: 'YYYY-MM-DD'
+  fechaFin: string    // formato: 'YYYY-MM-DD'
   status: 'active' | 'closed' | 'upcoming'
   alreadyVoted: boolean
-  date: string
+}
+
+// Función para determinar el estado basado en la fecha actual
+function calcularEstado(fechaInicio: string, fechaFin: string): 'active' | 'closed' | 'upcoming' {
+  const hoy = new Date().toISOString().split('T')[0]
+
+  if (hoy < fechaInicio) return 'upcoming'
+  if (hoy > fechaFin) return 'closed'
+  return 'active'
 }
 
 export const electionsData: Election[] = [
@@ -12,24 +22,27 @@ export const electionsData: Election[] = [
     id: '1',
     title: 'Elección de Alcalde 2025',
     description: 'Vota por el próximo alcalde.',
-    status: 'active',
+    fechaInicio: '2025-06-01',
+    fechaFin: '2025-06-10',
+    status: calcularEstado('2025-06-01', '2025-06-10'),
     alreadyVoted: false,
-    date: '2025-06-10',
   },
   {
     id: '2',
     title: 'Elección Universitaria',
     description: 'Representante estudiantil.',
-    status: 'closed',
+    fechaInicio: '2025-05-01',
+    fechaFin: '2025-05-05',
+    status: calcularEstado('2025-05-01', '2025-05-05'),
     alreadyVoted: true,
-    date: '2025-05-12',
   },
   {
     id: '3',
     title: 'Consulta Nacional',
     description: 'Participa en la decisión nacional.',
-    status: 'upcoming',
+    fechaInicio: '2025-07-01',
+    fechaFin: '2025-07-07',
+    status: calcularEstado('2025-07-01', '2025-07-07'),
     alreadyVoted: false,
-    date: '2025-07-01',
   },
 ]

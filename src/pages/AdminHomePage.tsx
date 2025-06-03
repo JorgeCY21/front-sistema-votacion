@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Header } from '../components/Header'
 import type { Election } from '../data/electionsData'
 import { electionsData } from '../data/electionsData'
+import { Link } from 'react-router-dom'
 
 export function AdminHomePage() {
   const [elections, setElections] = useState<Election[]>(electionsData)
@@ -36,7 +37,9 @@ export function AdminHomePage() {
         <h2 className="text-xl font-bold mb-6 text-blue-700">Administración</h2>
         <nav className="space-y-4 text-gray-700">
           <a href="#" className="block hover:text-blue-600">🏠 Panel Principal</a>
-          <a href="#" className="block hover:text-blue-600">🗳️ Crear Elección</a>
+          <Link to="/crear-eleccion" className="mb-6 inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded shadow">
+            🗳️ Crear Nueva Elección
+          </Link>
           <a href="#" className="block hover:text-blue-600">📊 Resultados</a>
           <a href="#" className="block hover:text-blue-600">📁 Historial</a>
           <a href="#" className="block hover:text-blue-600">⚙️ Configuración</a>
@@ -65,7 +68,7 @@ export function AdminHomePage() {
                     <div>
                       <h3 className="font-semibold">{election.title}</h3>
                       <p className="text-sm text-gray-600">{election.description}</p>
-                      <p className="text-xs text-gray-400">Fecha: {election.date}</p>
+                      <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
                       <StatusBadge status={election.status} />
                     </div>
                     <div className="space-x-2">
@@ -94,7 +97,7 @@ export function AdminHomePage() {
                   <li key={election.id} className="bg-white p-4 rounded shadow border border-blue-100">
                     <h3 className="font-semibold">{election.title}</h3>
                     <p className="text-sm text-gray-600">{election.description}</p>
-                    <p className="text-xs text-gray-400">Fecha: {election.date}</p>
+                    <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
                     <StatusBadge status={election.status} />
                   </li>
                 ))}
@@ -113,7 +116,7 @@ export function AdminHomePage() {
                   <li key={election.id} className="bg-white p-4 rounded shadow border border-gray-200">
                     <h3 className="font-semibold">{election.title}</h3>
                     <p className="text-sm text-gray-600">{election.description}</p>
-                    <p className="text-xs text-gray-400">Fecha: {election.date}</p>
+                    <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
                     <StatusBadge status={election.status} />
                   </li>
                 ))}
