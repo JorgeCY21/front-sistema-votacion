@@ -68,7 +68,7 @@ export function AdminHomePage() {
                     <div>
                       <h3 className="font-semibold">{election.title}</h3>
                       <p className="text-sm text-gray-600">{election.description}</p>
-                      <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
+                      <p className="text-xs text-gray-400">Fecha: {election.startDate} al {election.endDate}</p>
                       <StatusBadge status={election.status} />
                     </div>
                     <div className="space-x-2">
@@ -97,7 +97,7 @@ export function AdminHomePage() {
                   <li key={election.id} className="bg-white p-4 rounded shadow border border-blue-100">
                     <h3 className="font-semibold">{election.title}</h3>
                     <p className="text-sm text-gray-600">{election.description}</p>
-                    <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
+                    <p className="text-xs text-gray-400">Fecha: {election.startDate} al {election.endDate}</p>
                     <StatusBadge status={election.status} />
                   </li>
                 ))}
@@ -116,7 +116,7 @@ export function AdminHomePage() {
                   <li key={election.id} className="bg-white p-4 rounded shadow border border-gray-200">
                     <h3 className="font-semibold">{election.title}</h3>
                     <p className="text-sm text-gray-600">{election.description}</p>
-                    <p className="text-xs text-gray-400">Fecha: {election.fechaInicio} al {election.fechaFin}</p>
+                    <p className="text-xs text-gray-400">Fecha: {election.startDate} al {election.endDate}</p>
                     <StatusBadge status={election.status} />
                   </li>
                 ))}
