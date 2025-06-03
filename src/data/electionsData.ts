@@ -1,20 +1,21 @@
+// src/data/electionsData.ts
+
+export interface Candidate {
+  id: string
+  name: string
+  party: string
+  imageUrl: string
+}
+
 export interface Election {
   id: string
   title: string
   description: string
-  fechaInicio: string // formato: 'YYYY-MM-DD'
-  fechaFin: string    // formato: 'YYYY-MM-DD'
-  status: 'active' | 'closed' | 'upcoming'
+  startDate: string  // fecha de inicio
+  endDate: string    // fecha de fin
+  status: 'upcoming' | 'active' | 'closed'
   alreadyVoted: boolean
-}
-
-// Función para determinar el estado basado en la fecha actual
-function calcularEstado(fechaInicio: string, fechaFin: string): 'active' | 'closed' | 'upcoming' {
-  const hoy = new Date().toISOString().split('T')[0]
-
-  if (hoy < fechaInicio) return 'upcoming'
-  if (hoy > fechaFin) return 'closed'
-  return 'active'
+  candidates: Candidate[]
 }
 
 export const electionsData: Election[] = [
@@ -22,27 +23,23 @@ export const electionsData: Election[] = [
     id: '1',
     title: 'Elección de Alcalde 2025',
     description: 'Vota por el próximo alcalde.',
-    fechaInicio: '2025-06-01',
-    fechaFin: '2025-06-10',
-    status: calcularEstado('2025-06-01', '2025-06-10'),
+    startDate: '2025-06-10',
+    endDate: '2025-06-15',
+    status: 'active',
     alreadyVoted: false,
-  },
-  {
-    id: '2',
-    title: 'Elección Universitaria',
-    description: 'Representante estudiantil.',
-    fechaInicio: '2025-05-01',
-    fechaFin: '2025-05-05',
-    status: calcularEstado('2025-05-01', '2025-05-05'),
-    alreadyVoted: true,
-  },
-  {
-    id: '3',
-    title: 'Consulta Nacional',
-    description: 'Participa en la decisión nacional.',
-    fechaInicio: '2025-07-01',
-    fechaFin: '2025-07-07',
-    status: calcularEstado('2025-07-01', '2025-07-07'),
-    alreadyVoted: false,
+    candidates: [
+      {
+        id: 'c1',
+        name: 'Juan Pérez',
+        party: 'Partido Azul',
+        imageUrl: 'https://example.com/juan.jpg',
+      },
+      {
+        id: 'c2',
+        name: 'María López',
+        party: 'Partido Verde',
+        imageUrl: 'https://example.com/maria.jpg',
+      }
+    ]
   },
 ]
