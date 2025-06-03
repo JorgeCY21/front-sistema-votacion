@@ -49,20 +49,20 @@ const handleSubmit = () => {
     id: uuidv4(),
     title: form.title,
     description: form.description,
-    fechaInicio: form.fechaInicio,
-    fechaFin: form.fechaFin,
+    startDate: form.fechaInicio,
+    endDate: form.fechaFin,
     status,
-    alreadyVoted: form.alreadyVoted
+    alreadyVoted: form.alreadyVoted,
+    candidates: []
   }
 
   if (onCreate) {
     onCreate(newElection)
   }
 
-  navigate('/home')
+  // Redirige a la gestión de candidatos de esta elección nueva
+  navigate(`/eleccion/${newElection.id}/candidatos`)
 }
-
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
