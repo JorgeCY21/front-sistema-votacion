@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom'
 export function AdminHomePage() {
   const [elections, setElections] = useState<Election[]>(electionsData)
 
-  const activeElections = elections.filter(e => e.status === 'active')
-  const upcomingElections = elections.filter(e => e.status === 'upcoming')
-  const closedElections = elections.filter(e => e.status === 'closed')
+  const activeElections = elections.filter(e => e.status === 'activo')
+  const upcomingElections = elections.filter(e => e.status === 'pendiente')
+  const closedElections = elections.filter(e => e.status === 'cerrado')
 
   const handleDelete = (id: string) => {
     if (confirm('¿Estás seguro de eliminar esta elección?')) {

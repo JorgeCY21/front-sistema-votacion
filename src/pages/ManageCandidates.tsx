@@ -1,18 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import type { Election, Candidate } from '../data/electionsData'
+import { getElectionsFromStorage, saveElectionsToStorage } from '../utils/storage'
 import { v4 as uuidv4 } from 'uuid'
-
-const STORAGE_KEY = 'my_elections'
-
-function getElectionsFromStorage(): Election[] {
-  const raw = localStorage.getItem(STORAGE_KEY)
-  return raw ? JSON.parse(raw) : []
-}
-
-function saveElectionsToStorage(elections: Election[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(elections))
-}
 
 export function ManageCandidates() {
   const { id } = useParams<{ id: string }>()
@@ -114,6 +104,7 @@ export function ManageCandidates() {
       </div>
     )
   }
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <h1 className="text-2xl font-bold mb-6 text-blue-700">
@@ -172,16 +163,9 @@ export function ManageCandidates() {
 
       <ul className="space-y-4 max-w-md">
         {candidates.map(c => (
-          <li
-            key={c.id}
-            className="bg-white p-4 rounded shadow flex items-center justify-between"
-          >
+          <li key={c.id} className="bg-white p-4 rounded shadow flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <img
-                src={c.imageUrl}
-                alt={c.name}
-                className="w-12 h-12 rounded-full object-cover"
-              />
+              <img src={c.imageUrl} alt={c.name} className="w-12 h-12 rounded-full object-cover" />
               <div>
                 <p className="font-semibold">{c.name}</p>
                 <p className="text-sm text-gray-600">{c.party}</p>

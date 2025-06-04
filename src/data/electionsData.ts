@@ -11,10 +11,9 @@ export interface Election {
   id: string
   title: string
   description: string
-  startDate: string  // fecha de inicio
-  endDate: string    // fecha de fin
-  status: 'upcoming' | 'active' | 'closed'
-  alreadyVoted: boolean
+  startDate: string
+  endDate: string
+  status: 'pendiente' | 'activo' | 'cerrado'
   candidates: Candidate[]
 }
 
@@ -25,8 +24,7 @@ export const electionsData: Election[] = [
     description: 'Vota por el próximo alcalde.',
     startDate: '2025-06-10',
     endDate: '2025-06-15',
-    status: 'active',
-    alreadyVoted: false,
+    status: 'activo',
     candidates: [
       {
         id: 'c1',
