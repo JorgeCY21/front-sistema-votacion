@@ -53,16 +53,17 @@ const handleSubmit = () => {
     endDate: form.fechaFin,
     status,
     alreadyVoted: form.alreadyVoted,
-    candidates: []
+    candidates: [] // asumiendo que agregaste este campo
   }
 
   if (onCreate) {
     onCreate(newElection)
   }
 
-  // Redirige a la gestión de candidatos de esta elección nueva
+  // Navegar a la página para agregar candidatos, pasando el id
   navigate(`/eleccion/${newElection.id}/candidatos`)
 }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">

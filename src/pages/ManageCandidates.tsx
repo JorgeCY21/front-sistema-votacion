@@ -1,18 +1,27 @@
-// src/pages/ManageCandidates.tsx
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import type { Election, Candidate } from '../data/electionsData'
-import { electionsData } from '../data/electionsData'
 import { v4 as uuidv4 } from 'uuid'
+
+const STORAGE_KEY = 'my_elections'
+
+function getElectionsFromStorage(): Election[] {
+  const raw = localStorage.getItem(STORAGE_KEY)
+  return raw ? JSON.parse(raw) : []
+}
+
+function saveElectionsToStorage(elections: Election[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(elections))
+}
 
 export function ManageCandidates() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
 
+  const [elections, setElections] = useState<Election[]>([])
   const [election, setElection] = useState<Election | undefined>(undefined)
   const [candidates, setCandidates] = useState<Candidate[]>([])
 
-  // Form para nuevo/editar candidato
   const [form, setForm] = useState<{ id?: string; name: string; party: string; imageUrl: string }>({
     name: '',
     party: '',
@@ -22,15 +31,23 @@ export function ManageCandidates() {
   const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
-    const found = electionsData.find(e => e.id === id)
-    if (!found) {
-      alert('Elección no encontrada')
+    const stored = getElectionsFromStorage()
+    setElections(stored)
+  }, [])
+
+  useEffect(() => {
+    if (!id) {
       navigate('/home')
       return
     }
+    const found = elections.find(e => e.id === id)
+    if (!found) {
+      setElection(undefined)
+      return
+    }
     setElection(found)
-    setCandidates(found.candidates)
-  }, [id, navigate])
+    setCandidates(found.candidates ?? [])
+  }, [id, elections, navigate])
 
   const resetForm = () => {
     setForm({ name: '', party: '', imageUrl: '' })
@@ -39,6 +56,16 @@ export function ManageCandidates() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const saveCandidatesToElection = (newCandidates: Candidate[]) => {
+    if (!election) return
+    const updatedElections = elections.map(e =>
+      e.id === election.id ? { ...e, candidates: newCandidates } : e
+    )
+    setElections(updatedElections)
+    setCandidates(newCandidates)
+    saveElectionsToStorage(updatedElections)
   }
 
   const handleAdd = () => {
@@ -52,7 +79,7 @@ export function ManageCandidates() {
       party: form.party,
       imageUrl: form.imageUrl,
     }
-    setCandidates(prev => [...prev, newCandidate])
+    saveCandidatesToElection([...candidates, newCandidate])
     resetForm()
   }
 
@@ -66,25 +93,32 @@ export function ManageCandidates() {
       alert('Completa todos los campos')
       return
     }
-    setCandidates(prev =>
-      prev.map(c => (c.id === form.id ? { ...c, name: form.name, party: form.party, imageUrl: form.imageUrl } : c))
+    const newList = candidates.map(c =>
+      c.id === form.id ? { ...c, name: form.name, party: form.party, imageUrl: form.imageUrl } : c
     )
+    saveCandidatesToElection(newList)
     resetForm()
   }
 
   const handleDelete = (candidateId: string) => {
     if (confirm('¿Eliminar candidato?')) {
-      setCandidates(prev => prev.filter(c => c.id !== candidateId))
+      const newList = candidates.filter(c => c.id !== candidateId)
+      saveCandidatesToElection(newList)
     }
   }
 
-  // Ojo: aquí deberías sincronizar candidates con la data global o backend,
-  // por ahora solo está local
+  if (!election) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-red-600 font-semibold">Elección no encontrada</p>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <h1 className="text-2xl font-bold mb-6 text-blue-700">
-        Gestionar candidatos - {election?.title}
+        Gestionar candidatos - {election.title}
       </h1>
 
       <div className="mb-6 max-w-md">
@@ -139,9 +173,16 @@ export function ManageCandidates() {
 
       <ul className="space-y-4 max-w-md">
         {candidates.map(c => (
-          <li key={c.id} className="bg-white p-4 rounded shadow flex items-center justify-between">
+          <li
+            key={c.id}
+            className="bg-white p-4 rounded shadow flex items-center justify-between"
+          >
             <div className="flex items-center space-x-4">
-              <img src={c.imageUrl} alt={c.name} className="w-12 h-12 rounded-full object-cover" />
+              <img
+                src={c.imageUrl}
+                alt={c.name}
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <div>
                 <p className="font-semibold">{c.name}</p>
                 <p className="text-sm text-gray-600">{c.party}</p>

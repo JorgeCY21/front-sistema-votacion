@@ -4,6 +4,7 @@ import { LoginPage } from './pages/LoginPage'
 import { HomePage } from './pages/HomePage'
 import { useAuth } from './context/AuthContext'
 import { CreateElection } from './pages/CreateElection'
+import { ManageCandidates } from './pages/ManageCandidates' 
 
 export function App() {
   const { user } = useAuth()
@@ -22,6 +23,10 @@ export function App() {
         <Route
           path="/crear-eleccion"
           element={user ? <CreateElection /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/eleccion/:id/candidatos"
+          element={user ? <ManageCandidates /> : <Navigate to="/" />}
         />
       </Routes>
     </BrowserRouter>
