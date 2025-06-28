@@ -1,9 +1,11 @@
 // users.ts
+
 export interface User {
   id: string
   email: string
   password: string
-  name: string
+  first_name: string
+  last_name: string
   role: 'admin' | 'voter'
   dni?: string
   votedElections?: string[] // IDs de elecciones en las que ya votó
@@ -14,14 +16,16 @@ export const users: User[] = [
     id: '1',
     email: 'a@a', 
     password: '1', 
-    name: 'Administrador Principal',
+    first_name: 'Administrador',
+    last_name: 'Principal',
     role: 'admin' 
   },
   { 
     id: '2',
     email: 'e@e', 
     password: '2', 
-    name: 'Usuario Votante 1',
+    first_name: 'Usuario',
+    last_name: 'Votante 1',
     role: 'voter',
     dni: '12345678A'
   },
@@ -29,7 +33,8 @@ export const users: User[] = [
     id: '3',
     email: 'jorgecondoriosy21@gmail.com', 
     password: '12345', 
-    name: 'Jorge Condori',
+    first_name: 'Jorge',
+    last_name: 'Condori',
     role: 'voter',
     dni: '87654321B'
   },
