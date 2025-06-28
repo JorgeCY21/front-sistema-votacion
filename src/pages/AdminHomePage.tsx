@@ -134,7 +134,16 @@ function ElectionCard({
         </div>
       </div>
       <div className="flex space-x-2 pt-3 border-t border-gray-100">
-        <Link to={`/editar-eleccion/${election.id}`} className="flex-1 px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium text-center">
+        <Link
+          to={`/ver-eleccion/${election.id}`}
+          className="flex-1 px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-sm font-medium text-center"
+        >
+          Ver
+        </Link>
+        <Link
+          to={`/editar-eleccion/${election.id}`}
+          className="flex-1 px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium text-center"
+        >
           Editar
         </Link>
         <button
