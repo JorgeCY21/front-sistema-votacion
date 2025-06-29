@@ -1,4 +1,3 @@
-import { useAuth } from '../context/AuthContext'
 import { Header } from '../components/Header'
 import { useState } from 'react'
 import type { Election } from '../data/electionsData'
@@ -6,7 +5,6 @@ import { electionsData } from '../data/electionsData'
 import { useNavigate } from 'react-router-dom'
 
 export function VoterHomePage() {
-  const { logout } = useAuth()
   const navigate = useNavigate()
   const [elections] = useState<Election[]>(electionsData)
 
