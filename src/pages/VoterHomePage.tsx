@@ -82,15 +82,6 @@ export function VoterHomePage() {
               </ul>
             )}
           </section>
-
-          <div className="flex justify-end mt-12">
-            <button
-              onClick={logout}
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md shadow-md transition"
-            >
-              Cerrar sesión
-            </button>
-          </div>
         </div>
       </main>
     </div>

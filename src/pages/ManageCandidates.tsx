@@ -132,7 +132,7 @@ export function ManageCandidates() {
             <p className="text-indigo-600 font-medium">{election.title}</p>
             <p className="text-sm text-gray-500">{election.startDate} - {election.endDate} • {candidates.length} candidatos</p>
           </div>
-          <button onClick={() => navigate('/home')} className="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-50">
+          <button onClick={() => navigate('/home')} className="px-4 py-2 bg-white border cursor-pointer border-gray-300 rounded hover:bg-gray-50">
             Volver
           </button>
         </div>
@@ -170,11 +170,11 @@ export function ManageCandidates() {
               </div>
             )}
             <div className="flex space-x-2">
-              <button onClick={handleSubmit} className={`flex-1 px-4 py-2 text-white rounded-md ${isEditing ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-green-600 hover:bg-green-700'}`}>
+              <button onClick={handleSubmit} className={`flex-1 px-4 py-2 text-white cursor-pointer rounded-md ${isEditing ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-green-600 hover:bg-green-700'}`}>
                 {isEditing ? 'Actualizar' : 'Agregar'}
               </button>
               {isEditing && (
-                <button onClick={resetForm} className="flex-1 px-4 py-2 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                <button onClick={resetForm} className="flex-1 px-4 py-2 border cursor-pointer border-gray-300 rounded bg-white hover:bg-gray-50">
                   Cancelar
                 </button>
               )}
@@ -205,10 +205,10 @@ export function ManageCandidates() {
                         </div>
                       </div>
                       <div className="flex space-x-2">
-                        <button onClick={() => { setForm(c); setIsEditing(true) }} className="px-3 py-1 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50">
+                        <button onClick={() => { setForm(c); setIsEditing(true) }} className="px-3 py-1 cursor-pointer border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50">
                           Editar
                         </button>
-                        <button onClick={() => handleDelete(c.id)} className="px-3 py-1 border border-red-600 text-red-600 rounded hover:bg-red-50">
+                        <button onClick={() => handleDelete(c.id)} className="px-3 py-1 cursor-pointer border border-red-600 text-red-600 rounded hover:bg-red-50">
                           Eliminar
                         </button>
                       </div>

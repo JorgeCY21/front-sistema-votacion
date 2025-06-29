@@ -42,7 +42,7 @@ export function Header() {
           {user && (
             <button
               onClick={handleLogout}
-              className="mt-2 flex items-center space-x-1 text-red-500 hover:text-red-600 text-sm font-medium"
+              className="mt-2 flex items-center cursor-pointer space-x-1 text-red-500 hover:text-red-600 text-sm font-medium"
             >
               <LogOutIcon className="h-4 w-4" />
               <span>Cerrar sesión</span>

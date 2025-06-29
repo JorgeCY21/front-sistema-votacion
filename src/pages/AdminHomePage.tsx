@@ -148,7 +148,7 @@ function ElectionCard({
         </Link>
         <button
           onClick={() => onDelete(election.id)}
-          className="flex-1 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-sm font-medium"
+          className="flex-1 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-sm font-medium cursor-pointer"
         >
           Eliminar
         </button>
