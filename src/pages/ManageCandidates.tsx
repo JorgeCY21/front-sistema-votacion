@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import type { Candidate, Election } from '../data/electionsData'
 import { getElectionsFromStorage, saveElectionsToStorage } from '../utils/storage'
 import { v4 as uuidv4 } from 'uuid'
+import { Button } from '../components/ui/Button'
 
 export function ManageCandidates() {
   const { id } = useParams<{ id: string }>()
@@ -170,9 +171,14 @@ export function ManageCandidates() {
               </div>
             )}
             <div className="flex space-x-2">
-              <button onClick={handleSubmit} className={`flex-1 px-4 py-2 text-white cursor-pointer rounded-md ${isEditing ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-green-600 hover:bg-green-700'}`}>
+              <Button
+                type="button"
+                onClick={handleSubmit}
+                className={`flex-1 ${isEditing ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-green-600 hover:bg-green-700'}`}
+              >
                 {isEditing ? 'Actualizar' : 'Agregar'}
-              </button>
+              </Button>
+
               {isEditing && (
                 <button onClick={resetForm} className="flex-1 px-4 py-2 border cursor-pointer border-gray-300 rounded bg-white hover:bg-gray-50">
                   Cancelar

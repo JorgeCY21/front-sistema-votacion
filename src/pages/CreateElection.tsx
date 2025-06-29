@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import type { Election } from '../data/electionsData'
 import { getElectionsFromStorage, saveElectionsToStorage } from '../utils/storage'
+import { Button } from '../components/ui/Button' 
 
 export function CreateElection() {
   const navigate = useNavigate()
@@ -183,11 +184,7 @@ export function CreateElection() {
                 >
                   Cancelar
                 </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`px-6 py-3 border border-transparent cursor-pointer rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                >
+                <Button type="submit" disabled={isSubmitting} className={isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}>
                   {isSubmitting ? (
                     <>
                       <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -199,7 +196,7 @@ export function CreateElection() {
                   ) : (
                     'Crear y agregar candidatos'
                   )}
-                </button>
+                </Button>
               </div>
             </form>
           </div>
