@@ -13,13 +13,13 @@ export function LoginPage() {
             <div className="flex space-x-2 mb-8">
               <button
                 onClick={() => setActiveTab('login')}
-                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${activeTab === 'login' ? 'bg-gradient-to-r from-[#00ABE4] to-[#0096c7] text-white shadow-md' : 'text-gray-600 hover:bg-[#E9F1FA]'}}`}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg cursor-pointer transition-all duration-200 ${activeTab === 'login' ? 'bg-gradient-to-r from-[#00ABE4] to-[#0096c7] text-white shadow-md' : 'text-gray-600 hover:bg-[#E9F1FA]'}}`}
               >
                 Iniciar Sesión
               </button>
               <button
                 onClick={() => setActiveTab('register')}
-                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${activeTab === 'register' ? 'bg-gradient-to-r from-[#00ABE4] to-[#0096c7] text-white shadow-md' : 'text-gray-600 hover:bg-[#E9F1FA]'}}`}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg cursor-pointer transition-all duration-200 ${activeTab === 'register' ? 'bg-gradient-to-r from-[#00ABE4] to-[#0096c7] text-white shadow-md' : 'text-gray-600 hover:bg-[#E9F1FA]'}}`}
               >
                 Registrarse
               </button>

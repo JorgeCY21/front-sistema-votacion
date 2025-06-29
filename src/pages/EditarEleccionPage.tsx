@@ -63,7 +63,7 @@ export function EditarEleccionPage() {
         <div className="flex items-center mb-6">
           <button 
             onClick={() => navigate('/home')}
-            className="mr-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="mr-4 p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -151,7 +151,7 @@ export function EditarEleccionPage() {
               <button
                 type="button"
                 onClick={handleAddCandidate}
-                className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+                className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors cursor-pointer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
@@ -229,7 +229,7 @@ export function EditarEleccionPage() {
                       <button
                         type="button"
                         onClick={() => handleDeleteCandidate(index)}
-                        className="mt-2 px-3 py-1 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm transition-colors flex items-center"
+                        className="mt-2 px-3 py-1 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm transition-colors flex items-center cursor-pointer"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -248,13 +248,13 @@ export function EditarEleccionPage() {
             <button
               type="button"
               onClick={() => navigate('/home')}
-              className="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition-colors"
+              className="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition-colors cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg cursor-pointer"
             >
               Guardar Cambios
             </button>
