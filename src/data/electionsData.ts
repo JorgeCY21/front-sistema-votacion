@@ -40,14 +40,14 @@ export const electionsData: Election[] = [
         id: 'c1',
         name: 'Juan Pérez',
         party: 'Partido Azul',
-        imageUrl: 'https://example.com/juan.jpg',
+        imageUrl: 'https://i.pinimg.com/736x/d5/0c/48/d50c4877cdd2f1a16e7c54b073604de9.jpg',
         votes: 450
       },
       {
         id: 'c2',
         name: 'María López',
         party: 'Partido Verde',
-        imageUrl: 'https://example.com/maria.jpg',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoTd4MJd7T491a6595iKH6H9CnJ0rfDihPgQ&s',
         votes: 400
       }
     ]

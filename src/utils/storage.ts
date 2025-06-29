@@ -1,3 +1,4 @@
+// src/utils/storage.ts
 import type { Election } from '../data/electionsData'
 
 const STORAGE_KEY = 'my_elections'
