@@ -7,8 +7,8 @@ import { Button } from '../components/ui/Button'
 
 const StatusBadge = ({ status }: { status: Election['status'] }) => {
   const map = {
-    activo: 'bg-green-100 text-green-800',
-    pendiente: 'bg-blue-100 text-blue-800',
+    activo: 'bg-[#00ABE4]/10 text-[#0077a3]',
+    pendiente: 'bg-[#00ABE4]/10 text-[#0077a3]',
     cerrado: 'bg-gray-100 text-gray-800'
   }
   return (
@@ -21,15 +21,13 @@ const StatusBadge = ({ status }: { status: Election['status'] }) => {
 const SectionHeader = ({
   title,
   count,
-  color,
 }: {
   title: string
   count: number
-  color: string
 }) => (
   <div className="flex items-center justify-between mb-5">
     <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
-    <span className={`px-3 py-1 ${color} text-sm font-medium rounded-full`}>
+    <span className={`px-3 py-1 bg-[#00ABE4]/10 text-[#0077a3] text-sm font-medium rounded-full`}>
       {count} {title.toLowerCase().includes('cerradas') ? 'finalizadas' : 'registradas'}
     </span>
   </div>
@@ -56,7 +54,9 @@ export function AdminHomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
-              Panel Administrativo de Elecciones
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ABE4] to-[#0096c7]">
+                Panel Administrativo
+              </span>
             </h1>
             <Link to="/crear-eleccion" className="inline-block w-fit">
               <Button className="w-fit px-5 py-2">
@@ -67,7 +67,7 @@ export function AdminHomePage() {
 
           {/* Elecciones activas */}
           <section className="mb-10">
-            <SectionHeader title="Elecciones Activas" count={active.length} color="bg-green-100 text-green-800" />
+            <SectionHeader title="Elecciones Activas" count={active.length} />
             {active.length === 0 ? (
               <EmptySection to="/crear-eleccion" message="No hay elecciones activas." />
             ) : (
@@ -81,7 +81,7 @@ export function AdminHomePage() {
 
           {/* Próximas elecciones */}
           <section className="mb-10">
-            <SectionHeader title="Próximas Elecciones" count={upcoming.length} color="bg-blue-100 text-blue-800" />
+            <SectionHeader title="Próximas Elecciones" count={upcoming.length} />
             {upcoming.length === 0 ? (
               <EmptyText message="No hay elecciones programadas." />
             ) : (
@@ -91,7 +91,7 @@ export function AdminHomePage() {
 
           {/* Elecciones cerradas */}
           <section>
-            <SectionHeader title="Elecciones Cerradas" count={closed.length} color="bg-gray-100 text-gray-800" />
+            <SectionHeader title="Elecciones Cerradas" count={closed.length} />
             {closed.length === 0 ? (
               <EmptyText message="No hay elecciones finalizadas." />
             ) : (
@@ -141,7 +141,7 @@ function ElectionCard({
         </Link>
         <Link
           to={`/editar-eleccion/${election.id}`}
-          className="flex-1 px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium text-center"
+          className="flex-1 px-3 py-2 bg-[#00ABE4]/10 hover:bg-[#00ABE4]/20 text-[#0077a3] rounded-lg text-sm font-medium text-center"
         >
           Editar
         </Link>
@@ -166,13 +166,13 @@ function ElectionTable({
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200">
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+        <thead className="bg-[#00ABE4]/10">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Título</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Descripción</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fecha</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Acciones</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase">Título</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase">Descripción</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase">Fecha</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase">Estado</th>
+            <th className="px-6 py-3 text-right text-xs font-medium text-[#0077a3] uppercase">Acciones</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -183,7 +183,7 @@ function ElectionTable({
               <td className="px-6 py-4 text-sm text-gray-500">{e.startDate} - {e.endDate}</td>
               <td className="px-6 py-4"><StatusBadge status={e.status} /></td>
               <td className="px-6 py-4 text-right text-sm font-medium space-x-2">
-                <Link to={`/editar-eleccion/${e.id}`} className="text-indigo-600 hover:text-indigo-900">Editar</Link>
+                <Link to={`/editar-eleccion/${e.id}`} className="text-[#0077a3] hover:text-[#005f8a]">Editar</Link>
                 <button onClick={() => onDelete(e.id)} className="text-red-600 hover:text-red-900">Eliminar</button>
               </td>
             </tr>
@@ -207,7 +207,7 @@ function ClosedElection({ election }: { election: Election }) {
       <div className="flex space-x-2 w-full sm:w-auto">
         <Link
           to={`/resultados/${election.id}`}
-          className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-lg"
+          className="px-4 py-2 bg-[#00ABE4]/10 hover:bg-[#00ABE4]/20 text-[#0077a3] text-sm font-medium rounded-lg"
         >
           Ver resultados
         </Link>

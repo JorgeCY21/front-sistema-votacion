@@ -151,7 +151,7 @@ export function EditarEleccionPage() {
               <button
                 type="button"
                 onClick={handleAddCandidate}
-                className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors cursor-pointer"
+                className="flex items-center px-4 py-2 bg-gradient-to-r from-[#00ABE4] to-[#0096c7] hover:from-[#0096c7] hover:to-[#00ABE4]  text-white rounded-lg transition-colors cursor-pointer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
@@ -254,7 +254,7 @@ export function EditarEleccionPage() {
             </button>
             <button
               type="submit"
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg cursor-pointer"
+              className="px-6 py-3 bg-gradient-to-r from-[#00ABE4] to-[#0096c7] hover:from-[#0096c7] hover:to-[#00ABE4]  text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg cursor-pointer"
             >
               Guardar Cambios
             </button>

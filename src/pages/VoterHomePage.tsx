@@ -3,6 +3,7 @@ import { useState } from 'react'
 import type { Election } from '../data/electionsData'
 import { electionsData } from '../data/electionsData'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../components/ui/Button'
 
 export function VoterHomePage() {
   const navigate = useNavigate()
@@ -27,7 +28,7 @@ export function VoterHomePage() {
           {/* Hero Section */}
           <section className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ABE4] to-[#0096c7]">
                 Participa en las Elecciones
               </span>
             </h1>
@@ -40,12 +41,12 @@ export function VoterHomePage() {
           <section className="mb-16">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold text-gray-800 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-[#00ABE4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Elecciones Disponibles
               </h2>
-              <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-blue-100 text-[#0077a3] text-sm font-medium px-3 py-1 rounded-full">
                 {availableElections.length} activas
               </span>
             </div>
@@ -63,12 +64,12 @@ export function VoterHomePage() {
                 {availableElections.map(election => (
                   <div 
                     key={election.id} 
-                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-100"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#00ABE4]/20"
                   >
-                    <div className="h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                    <div className="h-3 bg-gradient-to-r from-[#00ABE4] to-[#0096c7]"></div>
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="bg-blue-50 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                        <span className="bg-[#00ABE4]/10 text-[#0077a3] text-xs font-medium px-2.5 py-0.5 rounded">
                           ACTIVA
                         </span>
                         <span className="text-sm text-gray-500">
@@ -85,12 +86,12 @@ export function VoterHomePage() {
                         {formatDate(election.startDate)} - {formatDate(election.endDate)}
                       </div>
 
-                      <button 
+                      <Button
+                        type="button"
                         onClick={() => navigate(`/vote/${election.id}`)}
-                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-300 shadow hover:shadow-md"
                       >
                         Participar ahora
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -101,7 +102,7 @@ export function VoterHomePage() {
           {/* Próximas elecciones */}
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-[#00ABE4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Próximas Elecciones
@@ -114,18 +115,18 @@ export function VoterHomePage() {
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-[#00ABE4]/10">
                     <tr>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase tracking-wider">
                         Elección
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase tracking-wider">
                         Descripción
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase tracking-wider">
                         Fechas
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-[#0077a3] uppercase tracking-wider">
                         Candidatos
                       </th>
                     </tr>
@@ -144,7 +145,7 @@ export function VoterHomePage() {
                           <div className="text-sm text-gray-500">al {formatDate(election.endDate)}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#00ABE4]/10 text-[#0077a3]">
                             {election.candidates.length} candidatos
                           </span>
                         </td>
@@ -159,7 +160,7 @@ export function VoterHomePage() {
           {/* Elecciones pasadas */}
           <section className="mb-10">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2 text-[#0096c7]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Historial de Elecciones
@@ -196,7 +197,7 @@ export function VoterHomePage() {
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                           'alreadyVoted' in election && election.alreadyVoted 
                             ? 'bg-green-100 text-green-800' 
-                            : 'bg-gray-100 text-gray-800'
+                            : 'bg-[#00ABE4]/10 text-[#0077a3]'
                         }`}>
                           {'alreadyVoted' in election
                             ? election.alreadyVoted
@@ -206,7 +207,7 @@ export function VoterHomePage() {
                         </span>
                         <button 
                           onClick={() => navigate(`/election/${election.id}`)}
-                          className="px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                          className="px-4 py-1.5 border border-[#00ABE4] rounded-lg text-sm font-medium text-[#0077a3] hover:bg-[#00ABE4]/10 transition-colors"
                         >
                           Ver resultados
                         </button>
