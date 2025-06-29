@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import {
-  UserIcon,
-  LockIcon,
-  EyeIcon,
-  EyeOffIcon,
-  UserPlusIcon,
-  MailIcon,
-} from 'lucide-react'
+import { UserIcon, LockIcon, EyeIcon, EyeOffIcon, UserPlusIcon, MailIcon, } from 'lucide-react'
+import { Button } from './ui/Button'
+import { Label } from './ui/Label'
+import { Input } from './ui/Input'
+
 export function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -27,66 +24,30 @@ export function RegisterForm() {
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Nombre completo
-          </label>
+          <Label htmlFor="name" required> Nombre completo </Label>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <UserIcon className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
             </div>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              placeholder="Juan Pérez"
-            />
+            <Input id="name" name="name" type="text" required className="pl-10 pr-3" placeholder="Juan Pérez"/>
           </div>
         </div>
         <div className="space-y-2">
-          <label
-            htmlFor="register-email"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Correo electrónico
-          </label>
+          <Label htmlFor="register-email" required> Correo electrónico </Label>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <MailIcon className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
             </div>
-            <input
-              id="register-email"
-              name="email"
-              type="email"
-              required
-              className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              placeholder="usuario@ejemplo.com"
-            />
+            <Input id="register-email" name="email" type="email" required placeholder="usuario@ejemplo.com" className="pl-10 pr-3" /> 
           </div>
         </div>
         <div className="space-y-2">
-          <label
-            htmlFor="register-password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Contraseña
-          </label>
+          <Label htmlFor="register-password" required> Contraseña </Label>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <LockIcon className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
             </div>
-            <input
-              id="register-password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              required
-              className="block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              placeholder="••••••••"
-            />
+           <Input id="register-password" name="password" type={showPassword ? 'text' : 'password'} required placeholder="••••••••" className="pl-10 pr-10" />
             <button
               type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center"
@@ -101,24 +62,12 @@ export function RegisterForm() {
           </div>
         </div>
         <div className="space-y-2">
-          <label
-            htmlFor="confirm-password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Confirmar contraseña
-          </label>
+          <Label htmlFor="confirm-password" required> Confirmar contraseña </Label>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <LockIcon className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
             </div>
-            <input
-              id="confirm-password"
-              name="confirm-password"
-              type={showConfirmPassword ? 'text' : 'password'}
-              required
-              className="block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-              placeholder="••••••••"
-            />
+            <Input id="confirm-password" name="confirm-password" type={showConfirmPassword ? 'text' : 'password'} required placeholder="••••••••" className="pl-10 pr-10" />
             <button
               type="button"
               className="absolute inset-y-0 right-0 pr-3 flex items-center"
@@ -134,13 +83,7 @@ export function RegisterForm() {
         </div>
         <div className="flex items-start">
           <div className="flex items-center h-5">
-            <input
-              id="terms"
-              name="terms"
-              type="checkbox"
-              required
-              className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-            />
+            <input id="terms" name="terms" type="checkbox" required className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
           </div>
           <div className="ml-2">
             <label htmlFor="terms" className="text-sm text-gray-700">
@@ -154,13 +97,10 @@ export function RegisterForm() {
             </label>
           </div>
         </div>
-        <button
-          type="submit"
-          className="w-full cursor-pointer flex justify-center items-center gap-2 py-2.5 px-4 border border-transparent rounded-lg shadow-md text-sm font-medium text-white bg-gradient-to-r from-[#00ABE4] to-[#0096c7] hover:from-[#0096c7] hover:to-[#00ABE4] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00ABE4] transition-all duration-300"
-        >
+        <Button type="submit">
           Registrarse
           <UserPlusIcon className="h-4 w-4" />
-        </button>
+        </Button>
       </form>
     </div>
   )
