@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import type { Election } from '../data/electionsData'
 import { electionsData } from '../data/electionsData'
+import { Button } from '../components/ui/Button' 
 
 const StatusBadge = ({ status }: { status: Election['status'] }) => {
   const map = {
@@ -57,12 +58,10 @@ export function AdminHomePage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
               Panel Administrativo de Elecciones
             </h1>
-            <Link
-              to="/crear-eleccion"
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-md transition-colors duration-200 flex items-center space-x-2"
-            >
-              <span>+</span>
-              <span>Crear Nueva Elección</span>
+            <Link to="/crear-eleccion" className="inline-block w-fit">
+              <Button className="w-fit px-5 py-2">
+                Crear nueva elección
+              </Button>
             </Link>
           </div>
 
@@ -221,11 +220,8 @@ function EmptySection({ to, message }: { to: string; message: string }) {
   return (
     <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
       <p className="text-gray-500 mb-4">{message}</p>
-      <Link
-        to={to}
-        className="inline-block px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg"
-      >
-        Crear nueva elección
+      <Link to={to} className="inline-block w-fit">
+        <Button className="w-fit px-5 py-2">Crear nueva elección</Button>
       </Link>
     </div>
   )
